@@ -1525,6 +1525,12 @@ public class ProfilerView extends ViewPart
 					methodCallContentProvider.aggregateData.clear();
 					dataCallContentProvider.aggregateData.clear();
 				}
+
+				if (drillDownAdapter.canGoHome())
+				{
+					drillDownAdapter.goHome();
+				}
+
 				methodCallViewer.refresh();
 			}
 		};
