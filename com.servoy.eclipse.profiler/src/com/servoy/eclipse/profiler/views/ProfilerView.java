@@ -194,10 +194,6 @@ public class ProfilerView extends ViewPart
 
 		private final HashMap<String, DataCallProfileData> dataCallProfileDataMap = new HashMap<String, DataCallProfileData>();
 
-		private Long queryTime;
-
-		private Integer queryCount;
-
 		private int innerFunctionLineStart = -1;
 
 		/**
@@ -389,15 +385,15 @@ public class ProfilerView extends ViewPart
 
 		public long getDataQueriesTime()
 		{
-			long time = 0;
+			long sqlTime = 0;
 			if (dataCallProfileDataMap.size() > 0)
 			{
 				for (DataCallProfileData profile : dataCallProfileDataMap.values())
 				{
-					time += profile.getTime();
+					sqlTime += profile.getTime();
 				}
 			}
-			return time;
+			return sqlTime;
 		}
 	}
 
@@ -1158,7 +1154,6 @@ public class ProfilerView extends ViewPart
 		transaction.setText("TransactionId");
 		transaction.setWidth(transactionTableColumnWidth);
 		transaction.setResizable(true);
-
 
 		dataCallContentProvider = new DataCallContentProvider();
 		sqlDataViewer.setLabelProvider(new DataCallLabelProvider());
